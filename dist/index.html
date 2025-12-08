@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/jpg" href="/logo.jpg" />
+  <title>ACTA | Desarrollo Web y Estrategia Digital</title>
+  <meta name="description"
+    content="Transformamos tu negocio con páginas web de alto impacto, diseño minimalista y estrategias de venta efectivas. Expertos en Desarrollo Web, Landing Pages y Automatización.">
+  <meta name="keywords"
+    content="Desarrollo Web, Landing Pages, Diseño Web Colombia, Estrategia Digital, Automatización, Ciencia de Datos, Páginas Web Ventas">
+  <meta name="theme-color" content="#2A2A2A">
+  <link rel="canonical" href="https://actaproject.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://actaproject.com/">
+  <meta property="og:title" content="ACTA | Soluciones Digitales que Venden">
+  <meta property="og:description"
+    content="Analizamos tu negocio. Construimos soluciones digitales que transforman y avanzan tu marca hacia el futuro.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/actaproject/assets/main/banner.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://actaproject.com/">
+  <meta property="twitter:title" content="ACTA | Soluciones Digitales que Venden">
+  <meta property="twitter:description"
+    content="Transformamos tu presencia digital con diseño minimalista y estrategias de venta. Desarrollo web premium.">
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/actaproject/assets/main/banner.jpg">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Style -->
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            acta: {
+              beige: '#E7E3D8', // Light Beige (Logo Background)
+              gold: '#C5A065',  // Matte Gold (Accents/Buttons)
+              dark: '#2A2A2A',  // Dark Gray
+              light: '#F9F9F9',
+              gray: '#86868B'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .fade-in-up {
+      animation: fadeInUc 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeInUc {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-duKVGYjq.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-yL06-hYD.css">
+</head>
+
+<body class="bg-gray-50 text-acta-dark antialiased">
+
+  <!-- Navbar -->
+  <nav
+    class="fixed top-6 inset-x-0 mx-auto max-w-5xl rounded-full z-50 bg-acta-beige/80 backdrop-blur-md border border-white/50 shadow-lg transition-transform duration-300 ease-in-out"
+    id="navbar">
+    <div class="px-8 py-3">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <a href="index.html" class="flex items-center">
+            <img src="/logo.jpg" alt="Logo ACTA" class="h-10 w-auto object-contain mix-blend-multiply">
+          </a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8 items-center">
+          <a href="index.html"
+            class="text-sm font-medium text-acta-dark hover:text-acta-gold transition-colors">Inicio</a>
+          <a href="#servicios"
+            class="text-sm font-medium text-gray-500 hover:text-acta-gold transition-colors">Servicios</a>
+          <a href="#contact"
+            class="text-sm font-medium text-gray-500 hover:text-acta-gold transition-colors">Contacto</a>
+          <a href="#servicios"
+            class="bg-acta-gold text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-yellow-700 transition-all duration-300 shadow-lg hover:shadow-yellow-500/20">
+            Ver Planes
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="text-gray-500 hover:text-acta-dark focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-white/95 border-t border-gray-100 rounded-b-3xl" id="mobile-menu">
+      <div class="px-8 pt-2 pb-6 space-y-1">
+        <a href="index.html" class="block py-3 text-base font-medium text-acta-dark border-b border-gray-50">Inicio</a>
+        <a href="#servicios" class="block py-3 text-base font-medium text-gray-500 hover:text-acta-orange">Servicios</a>
+        <a href="#contact" class="block py-3 text-base font-medium text-gray-500 hover:text-acta-orange">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero-section"
+    class="relative min-h-screen flex items-center pt-32 md:pt-40 lg:pt-48 pb-20 bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed transition-all duration-[2000ms] ease-in-out">
+    <!-- Overlay for better text readability if needed, currently subtle -->
+    <!-- <div class="absolute inset-0 bg-white/10"></div> -->
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="w-full md:w-1/2 lg:w-5/12">
+        <!-- Content Card (Mobile: Glass / Desktop: Transparent) -->
+        <div
+          class="bg-white/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none rounded-3xl p-8 md:p-0 shadow-xl md:shadow-none transition-all duration-300">
+
+          <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight fade-in-up">
+            Analizamos tu negocio.<br>
+            <span class="text-gray-900">
+              Construimos el futuro.
+            </span>
+          </h1>
+
+          <p class="text-lg md:text-xl text-gray-600 mt-6 mb-10 font-medium leading-relaxed fade-in-up delay-100">
+            Transformamos tu presencia digital con estrategias de alto impacto. Diseño minimalista, tecnología de punta
+            y resultados que hacen crecer tu marca.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 fade-in-up delay-200">
+            <a href="#servicios"
+              class="inline-flex justify-center items-center px-8 py-4 bg-acta-gold text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              Ver Planes
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            <a href="#contact"
+              class="inline-flex justify-center items-center px-8 py-4 bg-transparent text-gray-900 border-2 border-gray-900 font-bold rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300">
+              Contáctanos
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-acta-gold font-bold tracking-widest text-sm uppercase mb-3 block">Metodología</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6">Nuestro Proceso</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+          Simplificamos lo complejo. Tres pasos para transformar tu idea en una realidad digital rentable.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center group">
+          <div
+            class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 text-acta-gold text-3xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-magnifying-glass"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">1. Análisis</h3>
+          <p class="text-gray-500 leading-relaxed px-4">
+            Entendemos a fondo tu negocio, tu audiencia y tus objetivos para definir la hoja de ruta exacta.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center group">
+          <div
+            class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 text-acta-gold text-3xl shadow-lg group-hover:scale-110 transition-transform duration-300 delay-100">
+            <i class="fas fa-pencil-ruler"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">2. Estrategia & Diseño</h3>
+          <p class="text-gray-500 leading-relaxed px-4">
+            Estructuramos tu mensaje con copywriting persuasivo y diseñamos una interfaz limpia y moderna.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center group">
+          <div
+            class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 text-acta-gold text-3xl shadow-lg group-hover:scale-110 transition-transform duration-300 delay-200">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">3. Lanzamiento</h3>
+          <p class="text-gray-500 leading-relaxed px-4">
+            Desarrollamos, optimizamos y publicamos tu web, dejándola lista para recibir tráfico y ventas en tiempo
+            récord.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+
+        <!-- Mission Card -->
+        <div
+          class="bg-gray-50 p-10 rounded-2xl border border-gray-100 shadow-lg shadow-gray-200/50 transition-transform duration-300 hover:scale-[1.02]">
+          <div
+            class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center mb-8 text-acta-gold text-2xl">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-acta-dark mb-4">Nuestra Misión. <br>Tu Crecimiento.</h2>
+          <p class="text-xl text-gray-600 mb-8 font-light">
+            En ACTA, transformamos tu sitio web en tu motor de ventas más potente.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <div class="flex-shrink-0 h-6 w-6 rounded-full bg-yellow-100 flex items-center justify-center mt-1">
+                <i class="fas fa-check text-acta-gold text-xs"></i>
+              </div>
+              <p class="ml-4 text-gray-600">Diseñamos pensando en la estrategia y en resutados medibles.</p>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 h-6 w-6 rounded-full bg-yellow-100 flex items-center justify-center mt-1">
+                <i class="fas fa-check text-acta-gold text-xs"></i>
+              </div>
+              <p class="ml-4 text-gray-600">Conectas con tus clientes ideales de forma sólida y profesional.</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Vision Card -->
+        <div
+          class="bg-acta-dark p-10 rounded-2xl shadow-xl shadow-gray-900/20 text-white relative overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+          <!-- Background accent -->
+          <div class="absolute top-0 right-0 w-64 h-64 bg-acta-gold opacity-10 rounded-full blur-3xl -mr-32 -mt-32">
+          </div>
+
+          <div
+            class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-8 text-acta-gold text-2xl backdrop-blur-sm">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-white mb-4">La Visión de ACTA: <br>Futuro Sólido.</h2>
+          <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+            Buscamos ser el referente de calidad y proceso en el desarrollo web. Nuestra visión es que cada cliente que
+            pasa por ACTA lidere su industria con una base digital sólida y adaptable.
+          </p>
+          <p class="text-white font-medium italic border-l-4 border-acta-gold pl-4 bg-white/5 py-3 rounded-r-lg">
+            "Siempre en ciclo de mejora continua para que tu plataforma nunca se quede obsoleta."
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-24 bg-gray-900" id="servicios">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-acta-gold font-bold tracking-widest text-sm uppercase mb-3 block">Nuestros Planes</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Inversión Transparente</h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto font-light">
+          Elige la solución que mejor se adapte a tu etapa actual. Calidad premium garantizada.
+        </p>
+
+        <!-- Currency Switch -->
+        <div class="flex justify-center mt-8">
+          <div class="bg-gray-100 p-1 rounded-full inline-flex relative">
+            <button id="btn-cop"
+              class="px-6 py-2 rounded-full text-sm font-bold bg-white text-acta-dark shadow-sm transition-all duration-300 z-10">COP</button>
+            <button id="btn-usd"
+              class="px-6 py-2 rounded-full text-sm font-bold text-gray-400 hover:text-acta-gold transition-all duration-300 z-10">USD</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+        <!-- Basic Plan -->
+        <div
+          class="bg-white rounded-2xl p-8 border border-acta-gold/30 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center h-full relative group overflow-hidden">
+          <div
+            class="absolute inset-x-0 top-0 h-1 bg-acta-gold/20 group-hover:bg-acta-gold transition-colors duration-300">
+          </div>
+
+          <div
+            class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-6 text-acta-gold text-2xl group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-desktop"></i>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Página Básica / Blog</h3>
+          <p class="text-gray-500 mb-8 h-10 px-4">Tu carta de presentación digital. Ideal para marcas que buscan generar
+            confianza y tener presencia profesional en Google.</p>
+
+          <div class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-6 mb-6 block" id="price-basic"
+            data-cop="$800.000" data-usd="$200">
+            $800.000 <span class="text-lg font-normal text-gray-500 currency-label">COP</span>
+          </div>
+
+          <a href="#contact" onclick="document.getElementById('mensaje').value='Estoy interesado en el Plan Básico...'"
+            class="border-2 border-acta-gold text-acta-gold font-bold py-3 px-8 rounded-full hover:bg-acta-gold hover:text-white transition-all duration-300 mb-8 w-full max-w-xs">
+            Empezar Ahora
+          </a>
+
+          <ul class="text-left space-y-4 text-gray-600 w-full px-4">
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Diseño Institucional Limpio
+            </li>
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Sección de Servicios y Blog
+            </li>
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Formulario de Contacto Básico
+            </li>
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Enlaces a Redes Sociales</li>
+          </ul>
+        </div>
+
+        <!-- Landing Page Plan -->
+        <div
+          class="bg-white rounded-2xl p-8 border border-acta-gold/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center h-full relative group overflow-hidden ring-4 ring-acta-gold/5">
+          <div
+            class="absolute top-4 right-4 bg-acta-gold text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            Popular</div>
+
+          <div
+            class="w-16 h-16 bg-acta-gold/10 rounded-full flex items-center justify-center mb-6 text-acta-gold text-2xl group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-rocket"></i>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Landing Page Pro</h3>
+          <p class="text-gray-500 mb-8 h-10 px-4">Una máquina de ventas 24/7. Estrategia de diseño y persuasión enfocada
+            100% en convertir visitantes en clientes reales.</p>
+
+          <div class="mb-8">
+            <div class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-6 mb-6 block" id="price-pro"
+              data-cop="$1.200.000" data-usd="$300">
+              $1.200.000 <span class="text-lg font-normal text-gray-500 currency-label">COP</span>
+            </div>
+            <p class="text-xs text-gray-400 mt-4 font-medium">(El precio varía dependiendo de la dificultad)</p>
+          </div>
+
+          <a href="#contact" onclick="document.getElementById('mensaje').value='Estoy interesado en la Landing Page...'"
+            class="bg-acta-gold text-white font-bold py-3 px-8 rounded-full hover:bg-yellow-700 hover:shadow-lg transition-all duration-300 mb-8 w-full max-w-xs transform hover:-translate-y-1">
+            Empezar Ahora
+          </a>
+
+          <ul class="text-left space-y-4 text-gray-600 w-full px-4">
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Estructura de Alta Conversión
+              (Ventas)</li>
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Copywriting Persuasivo
+              (Textos que venden)</li>
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Botones de Acción
+              Estratégicos (CTA)</li>
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Carga Ultra-Rápida para
+              Anuncios</li>
+            <li class="flex items-center"><i class="fas fa-check text-acta-gold mr-3"></i> Integración con WhatsApp /
+              CRM</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-24 bg-gray-50" id="contact">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-acta-dark mb-4">Contáctanos</h2>
+        <p class="text-xl text-gray-500 font-light">Cuéntanos tu proyecto y lo haremos realidad.</p>
+      </div>
+
+      <!-- Premium Form Card -->
+      <form id="contactForm"
+        class="space-y-8 bg-white p-10 rounded-3xl shadow-2xl border border-gray-100 relative overflow-hidden">
+        <!-- Decorative subtle element -->
+        <div
+          class="absolute top-0 right-0 w-40 h-40 bg-orange-50 rounded-bl-full -mr-20 -mt-20 opacity-50 pointer-events-none">
+        </div>
+
+        <div class="relative z-10">
+          <label for="nombre" class="block text-gray-700 font-bold mb-2 tracking-wide">Nombre</label>
+          <input type="text" name="nombre" id="nombre" required
+            class="w-full bg-gray-50 text-gray-900 px-6 py-4 rounded-xl border border-gray-200 outline-none focus:border-transparent focus:ring-2 focus:ring-acta-gold transition-all duration-300 placeholder-gray-400"
+            placeholder="Tu nombre completo">
+        </div>
+
+        <div class="relative z-10">
+          <label for="email" class="block text-gray-700 font-bold mb-2 tracking-wide">Email</label>
+          <input type="email" name="email" id="email" required
+            class="w-full bg-gray-50 text-gray-900 px-6 py-4 rounded-xl border border-gray-200 outline-none focus:border-transparent focus:ring-2 focus:ring-acta-gold transition-all duration-300 placeholder-gray-400"
+            placeholder="ejemplo@correo.com">
+        </div>
+
+        <div class="relative z-10">
+          <label for="mensaje" class="block text-gray-700 font-bold mb-2 tracking-wide">Mensaje</label>
+          <textarea name="mensaje" id="mensaje" rows="4" required
+            class="w-full bg-gray-50 text-gray-900 px-6 py-4 rounded-xl border border-gray-200 outline-none focus:border-transparent focus:ring-2 focus:ring-acta-gold transition-all duration-300 placeholder-gray-400 resize-none"
+            placeholder="¿Cómo podemos ayudarte?"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-acta-gold text-white font-bold tracking-wide py-4 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative z-10">
+          Enviar Mensaje
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="bg-gray-900 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+
+        <!-- Brand -->
+        <div class="col-span-1 md:col-span-2">
+          <a href="#" class="block mb-6">
+            <!-- Logo with filter to make it white -->
+            <img src="/logo.jpg" alt="Logo ACTA"
+              class="h-12 brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300">
+          </a>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+            Analizamos tu negocio. Construimos soluciones digitales que transforman y avanzan tu marca hacia el futuro.
+          </p>
+        </div>
+
+        <!-- Links Column -->
+        <div>
+          <h4 class="text-acta-gold font-bold uppercase tracking-wider text-sm mb-6">Navegación</h4>
+          <ul class="space-y-4">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Inicio</a>
+            </li>
+            <li><a href="#servicios"
+                class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Planes y Servicios</a>
+            </li>
+            <li><a href="#contact"
+                class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Column -->
+        <div>
+          <h4 class="text-acta-gold font-bold uppercase tracking-wider text-sm mb-6">Síguenos</h4>
+          <div class="flex gap-4">
+            <a href="https://www.instagram.com/acta.proyect?utm_source=qr&igsh=b2hmaGxwdmw1YWhr" target="_blank"
+              class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-acta-gold hover:text-white transition-all duration-300"
+              title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:acta.proyect@gmail.com"
+              class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-acta-gold hover:text-white transition-all duration-300"
+              title="Email">
+              <i class="far fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-xs">
+          &copy; 2025 ACTA. Todos los derechos reservados.
+        </p>
+        <p class="text-gray-600 text-xs">
+          Diseñado con <i class="fas fa-heart text-gray-700 mx-1"></i> por ACTA Dev Team.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/573003961835?text=Hola%20ACTA,%20estoy%20interesado%20en%20sus%20servicios" target="_blank"
+    class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-acta-gold flex items-center justify-center shadow-xl border-2 border-white hover:scale-110 hover:shadow-2xl transition-all duration-300 group">
+    <i class="fab fa-whatsapp text-3xl text-white group-hover:rotate-12 transition-transform duration-300"></i>
+  </a>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification"
+    class="fixed bottom-5 right-5 z-50 transform translate-y-10 opacity-0 hidden transition-all duration-300 ease-out">
+    <div
+      class="bg-gray-800 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3 border border-gray-700">
+      <div id="toast-icon" class="text-green-400 text-xl">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <span id="toast-message" class="font-medium text-sm">Notificación</span>
+    </div>
+  </div>
+
+</body>
+
+</html>
