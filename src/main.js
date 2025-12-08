@@ -1,209 +1,122 @@
-import '../style.css';
+// Importamos el CSS para que Vite lo empaquete correctamente
+import './style.css';
 
-// Toast Notification Logic
-const showToast = (message, isError = false) => {
-  const toast = document.getElementById('toast-notification');
-  const toastMessage = document.getElementById('toast-message');
-  const toastIcon = document.getElementById('toast-icon');
+// --- 1. Lógica de la Barra de Navegación Flotante (Scroll) ---
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.getElementById('navbar');
+  let lastScrollTop = 0;
 
-  if (!toast || !toastMessage || !toastIcon) return;
+  window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  // Set message
-  toastMessage.textContent = message;
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      // Bajando y ya pasamos el Hero: ocultar
+      navbar.classList.remove('translate-y-0');
+      navbar.classList.add('-translate-y-32');
+    } else {
+      // Subiendo: mostrar
+      navbar.classList.remove('-translate-y-32');
+      navbar.classList.add('translate-y-0');
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  }, false);
 
-  // Set styling based on type
-  if (isError) {
-    toastIcon.className = 'text-red-400 text-xl';
-    toastIcon.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
-  } else {
-    toastIcon.className = 'text-green-400 text-xl';
-    toastIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
-  }
+  // Lógica para botón de menú móvil
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-  // Show toast
-  toast.classList.remove('hidden', 'opacity-0', 'translate-y-10');
-  toast.classList.add('flex', 'opacity-100', 'translate-y-0');
-
-  // Hide after 3 seconds
-  setTimeout(() => {
-    toast.classList.remove('flex', 'opacity-100', 'translate-y-0');
-    toast.classList.add('opacity-0', 'translate-y-10');
-
-    // Wait for transition to finish before hiding completely
-    setTimeout(() => {
-      toast.classList.add('hidden');
-    }, 300);
-  }, 3000);
-};
-
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if (mobileMenuBtn && mobileMenu) {
   mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
   });
-}
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (mobileMenu) mobileMenu.classList.add('hidden');
-  });
 });
 
-// Navbar Background on Scroll
-// Smart Scroll Logic for Floating Navbar
-const navbar = document.getElementById('navbar');
-let lastScrollY = window.scrollY;
+// --- 2. Lógica del Conversor de Moneda (COP/USD) ---
+document.addEventListener('DOMContentLoaded', () => {
+  const btnCop = document.getElementById('btn-cop');
+  const btnUsd = document.getElementById('btn-usd');
+  const priceBasic = document.getElementById('price-basic');
+  const pricePro = document.getElementById('price-pro');
+  const currencyLabels = document.querySelectorAll('.currency-label');
 
-window.addEventListener('scroll', () => {
-  const currentScrollY = window.scrollY;
+  function updatePrices(currency) {
+    let priceTarget = (currency === 'USD') ? 'data-usd' : 'data-cop';
+    let labelText = (currency === 'USD') ? 'USD' : 'COP';
 
-  // Always show if at the very top
-  if (currentScrollY <= 0) {
-    navbar.classList.remove('-translate-y-[150%]');
-    lastScrollY = currentScrollY;
-    return;
-  }
+    // Actualizar precios
+    if (priceBasic) priceBasic.innerHTML = `${priceBasic.getAttribute(priceTarget)} <span class="text-lg font-normal text-gray-500 currency-label">${labelText}</span>`;
+    if (pricePro) pricePro.innerHTML = `${pricePro.getAttribute(priceTarget)} <span class="text-lg font-normal text-gray-500 currency-label">${labelText}</span>`;
 
-  if (currentScrollY > lastScrollY && currentScrollY > 50) {
-    // Scrolling DOWN -> Hide
-    navbar.classList.add('-translate-y-[150%]');
-  } else {
-    // Scrolling UP -> Show
-    navbar.classList.remove('-translate-y-[150%]');
-  }
-
-  lastScrollY = currentScrollY;
-});
-
-// Smooth Scroll for Anchor Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      const headerOffset = 80;
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  });
-});
-
-// Form Submission Handling
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Obtener datos de los inputs
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData.entries());
-
-    // Validar que no estén vacíos
-    if (!data.nombre || !data.email || !data.mensaje) {
-      showToast('Por favor, completa todos los campos.', true);
-      return;
-    }
-
-    try {
-      // Enviar los datos al backend
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        showToast('¡Mensaje enviado con éxito! Te contactaremos pronto.');
-        contactForm.reset();
+    // Actualizar estilos del botón
+    if (btnCop && btnUsd) {
+      if (currency === 'USD') {
+        btnUsd.classList.remove('bg-white', 'text-gray-400');
+        btnUsd.classList.add('bg-white', 'text-acta-dark');
+        btnCop.classList.remove('bg-white', 'text-acta-dark');
+        btnCop.classList.add('text-gray-400');
       } else {
-        showToast(result.error || 'Error al enviar el mensaje.', true);
+        btnCop.classList.remove('bg-white', 'text-gray-400');
+        btnCop.classList.add('bg-white', 'text-acta-dark');
+        btnUsd.classList.remove('bg-white', 'text-acta-dark');
+        btnUsd.classList.add('text-gray-400');
+      }
+    }
+  }
+
+  if (btnCop && btnUsd) {
+    btnCop.addEventListener('click', () => updatePrices('COP'));
+    btnUsd.addEventListener('click', () => updatePrices('USD'));
+  }
+});
+
+// --- 3. Lógica del Formulario de Contacto (Fetch API) ---
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const toast = document.getElementById('toast-notification');
+  const toastMessage = document.getElementById('toast-message');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // <--- ESTA ES LA CLAVE PARA QUE NO RECARGUE LA PÁGINA
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        // Usamos la ruta relativa que configuramos en producción
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          toastMessage.textContent = 'Mensaje enviado con éxito. ¡Pronto nos contactaremos!';
+          form.reset();
+        } else {
+          const errorData = await response.json();
+          toastMessage.textContent = `Error al enviar: ${errorData.error || 'Intenta de nuevo.'}`;
+        }
+
+      } catch (error) {
+        toastMessage.textContent = 'Error de conexión. Verifica la consola.';
+        console.error('Error en la solicitud Fetch:', error);
       }
 
-    } catch (error) {
-      console.error('Error de red:', error);
-      showToast('Problema de conexión con el servidor.', true);
-    }
-  });
-}
+      // Mostrar el toast
+      toast.style.display = 'flex';
+      setTimeout(() => {
+        toast.classList.remove('translate-y-10', 'opacity-0');
+      }, 50);
 
-// Hero Background Slideshow
-const heroImages = ['/hero-bg.jpg', '/hero-bg-2.jpg', '/hero-bg-3.jpg'];
-let currentImageIndex = 0;
-
-// Preload images
-heroImages.forEach(src => {
-  const img = new Image();
-  img.src = src;
-});
-
-setInterval(() => {
-  currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-  const heroSection = document.getElementById('hero-section');
-  if (heroSection) {
-    heroSection.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
+      // Ocultar el toast después de 5 segundos
+      setTimeout(() => {
+        toast.classList.add('translate-y-10', 'opacity-0');
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 300);
+      }, 5000);
+    });
   }
-}, 5000);
-
-// Currency Switch Logic
-const btnCop = document.getElementById('btn-cop');
-const btnUsd = document.getElementById('btn-usd');
-const priceBasic = document.getElementById('price-basic');
-const pricePro = document.getElementById('price-pro');
-const currencyLabels = document.querySelectorAll('.currency-label');
-
-if (btnCop && btnUsd && priceBasic && pricePro) {
-
-  const setCurrency = (currency) => {
-    if (currency === 'USD') {
-      // Styles for USD Active
-      btnUsd.classList.add('bg-white', 'text-acta-dark', 'shadow-sm');
-      btnUsd.classList.remove('text-gray-400');
-
-      btnCop.classList.remove('bg-white', 'text-acta-dark', 'shadow-sm');
-      btnCop.classList.add('text-gray-400');
-
-      // Update Prices
-      // Accessing childNodes[0] because the price text is the first text node before the span
-      priceBasic.childNodes[0].nodeValue = priceBasic.dataset.usd + ' ';
-      pricePro.childNodes[0].nodeValue = pricePro.dataset.usd + ' ';
-
-      // Update Labels
-      currencyLabels.forEach(label => label.textContent = 'USD');
-
-    } else {
-      // Styles for COP Active
-      btnCop.classList.add('bg-white', 'text-acta-dark', 'shadow-sm');
-      btnCop.classList.remove('text-gray-400');
-
-      btnUsd.classList.remove('bg-white', 'text-acta-dark', 'shadow-sm');
-      btnUsd.classList.add('text-gray-400');
-
-      // Update Prices
-      priceBasic.childNodes[0].nodeValue = priceBasic.dataset.cop + ' ';
-      pricePro.childNodes[0].nodeValue = pricePro.dataset.cop + ' ';
-
-      // Update Labels
-      currencyLabels.forEach(label => label.textContent = 'COP');
-    }
-  };
-
-  btnUsd.addEventListener('click', () => setCurrency('USD'));
-  btnCop.addEventListener('click', () => setCurrency('COP'));
-}
+});
