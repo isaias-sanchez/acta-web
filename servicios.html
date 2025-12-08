@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios | ACTA</title>
+    <meta name="description"
+        content="Planes y servicios de ACTA. Desarrollo web, Landing Pages y E-commerce a tu medida.">
+    <meta property="og:title" content="Servicios | ACTA">
+    <meta property="og:description"
+        content="Inversión transparente para tu negocio. Elige el plan que mejor se adapte a ti.">
+    <!-- Placeholder for banner image if available -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/actaproject/assets/main/banner.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        acta: {
+                            orange: '#C25E00', // Burnt Orange
+                            dark: '#1A1A1A',
+                            light: '#F5F5F7',
+                            gray: '#86868B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-acta-dark antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-bold tracking-tighter text-acta-dark">
+                        ACTA<span class="text-acta-orange">.</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html"
+                        class="text-sm font-medium text-gray-500 hover:text-acta-orange transition-colors">Inicio</a>
+                    <a href="servicios.html"
+                        class="text-sm font-medium text-acta-dark hover:text-acta-orange transition-colors">Servicios</a>
+                    <a href="#footer"
+                        class="text-sm font-medium text-gray-500 hover:text-acta-orange transition-colors">Contacto</a>
+                    <a href="servicios.html"
+                        class="bg-acta-dark text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-acta-orange transition-all duration-300 shadow-lg hover:shadow-orange-500/20">
+                        Ver Planes
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-500 hover:text-acta-dark focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white border-b border-gray-100 hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="index.html"
+                    class="block py-3 text-base font-medium text-gray-500 hover:text-acta-orange">Inicio</a>
+                <a href="servicios.html"
+                    class="block py-3 text-base font-medium text-acta-dark border-b border-gray-50">Servicios</a>
+                <a href="#footer"
+                    class="block py-3 text-base font-medium text-gray-500 hover:text-acta-orange">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Title Section -->
+    <section class="pt-32 pb-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-acta-orange font-semibold tracking-wider text-sm uppercase mb-2 block">Nuestros
+                Planes</span>
+            <h1 class="text-3xl md:text-5xl font-bold text-acta-dark mb-6">Inversión Transparente para tu Negocio</h1>
+            <p class="text-gray-500 max-w-2xl mx-auto">Elige el plan que mejor se adapte a tu etapa actual. Escalamiento
+                garantizado.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Cards Section -->
+    <section class="py-12 pb-24 bg-gray-50 flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+
+                <!-- Plan 1 -->
+                <div
+                    class="bg-white rounded-2xl p-8 border border-gray-100 hover:border-orange-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative group">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Página Básica / Blog</h3>
+                    <p class="text-sm text-gray-500 mb-6 h-10">Ideal para presentación de empresa, blog personal o
+                        portafolio.</p>
+                    <div class="flex items-baseline mb-8">
+                        <span class="text-3xl font-bold text-acta-dark">$800.000</span>
+                        <span class="text-gray-500 ml-2 text-sm">COP</span>
+                    </div>
+                    <a href="mailto:acta.proyect@gmail.com?subject=Interesado%20en%20Plan%20Basico"
+                        class="block w-full text-center bg-gray-50 text-acta-dark font-medium py-3 rounded-xl hover:bg-acta-dark hover:text-white transition-colors border border-gray-200">Empezar
+                        Ahora</a>
+                    <ul class="mt-8 space-y-4 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Diseño
+                            Responsive</li>
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Carga Rápida
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Enlaces a Redes
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Formulario
+                            Simple</li>
+                    </ul>
+                </div>
+
+                <!-- Plan 2 (Highlighted) -->
+                <div
+                    class="bg-acta-dark rounded-2xl p-8 border border-gray-800 shadow-2xl relative transform md:-translate-y-4 z-10">
+                    <div
+                        class="absolute top-0 right-0 bg-acta-orange text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase tracking-wide">
+                        Más Popular</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Landing Page / Contacto</h3>
+                    <p class="text-sm text-gray-400 mb-6 h-10">Para captación de clientes y campañas de publicidad
+                        efectivas.</p>
+                    <div class="flex items-baseline mb-8">
+                        <span class="text-4xl font-bold text-white">$900.000</span>
+                        <span class="text-gray-400 ml-2 text-sm">COP</span>
+                    </div>
+                    <a href="mailto:acta.proyect@gmail.com?subject=Interesado%20en%20Plan%20Landing"
+                        class="block w-full text-center bg-acta-orange text-white font-medium py-3 rounded-xl hover:bg-white hover:text-acta-orange transition-colors shadow-lg shadow-orange-900/50">Empezar
+                        Ahora</a>
+                    <ul class="mt-8 space-y-4 text-sm text-gray-300">
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Todo lo del
+                            Plan Básico</li>
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Formulario
+                            Avanzado</li>
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Botones
+                            WhatsApp Directos</li>
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Optimización
+                            Conversión</li>
+                    </ul>
+                </div>
+
+                <!-- Plan 3 -->
+                <div
+                    class="bg-white rounded-2xl p-8 border border-gray-100 hover:border-orange-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">E-Commerce</h3>
+                    <p class="text-sm text-gray-500 mb-6 h-10">Venta de productos físicos o digitales profesionalmente.
+                    </p>
+                    <div class="flex items-baseline mb-2">
+                        <span class="text-3xl font-bold text-acta-dark">$1.5M - 2M</span>
+                        <span class="text-gray-500 ml-2 text-sm">COP</span>
+                    </div>
+                    <p class="text-xs text-orange-600 mb-6 italic">*El precio varía según integraciones IA/Pagos.</p>
+
+                    <a href="mailto:acta.proyect@gmail.com?subject=Interesado%20en%20Plan%20Ecommerce"
+                        class="block w-full text-center bg-gray-50 text-acta-dark font-medium py-3 rounded-xl hover:bg-acta-dark hover:text-white transition-colors border border-gray-200">Cotizar
+                        Medida</a>
+                    <ul class="mt-8 space-y-4 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Catálogo de
+                            Productos</li>
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Carrito de
+                            Compras</li>
+                        <li class="flex items-center"><i class="fas fa-check text-acta-orange mr-3"></i> Pasarela de
+                            Pagos</li>
+                        <li class="flex items-center"><i class="fas fa-plus text-gray-400 mr-3"></i> Integración IA
+                            (Opcional)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+                <!-- Brand -->
+                <div class="text-center md:text-left">
+                    <a href="index.html" class="text-3xl font-bold tracking-tighter text-acta-dark block mb-2">
+                        ACTA<span class="text-acta-orange">.</span>
+                    </a>
+                    <p class="text-gray-500 text-sm">Analizar. Construir. Transformar. Avanzar.</p>
+                </div>
+
+                <!-- Contact -->
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/acta.proyect?utm_source=qr&igsh=b2hmaGxwdmw1YWhr" target="_blank"
+                        class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-acta-orange hover:text-white transition-all duration-300 text-xl"
+                        title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="mailto:acta.proyect@gmail.com"
+                        class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-acta-orange hover:text-white transition-all duration-300 text-xl"
+                        title="Email">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-gray-100 text-center text-sm text-gray-400">
+                &copy; 2025 ACTA. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
