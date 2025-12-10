@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -7,20 +6,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        'acta-bg': '#121212',
-        'acta-accent': '#D2B48C',
-        'acta-text': '#F5F5F5',
-        'acta-gray': '#2A2A2A',
+        acta: {
+          beige: '#E7E3D8',
+          gold: '#C5A065',
+          dark: '#2A2A2A',
+          light: '#F9F9F9',
+          gray: '#86868B'
+        }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        heading: ['Montserrat', 'sans-serif'],
-      },
-      container: {
-        center: true,
-        padding: '1rem',
-      },
-    },
+      }
+    }
   },
   plugins: [],
 }
