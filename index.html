@@ -50,13 +50,20 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8 items-center">
-          <a href="index.html"
+          <a href="index.html" data-i18n="nav_home"
             class="text-sm font-medium text-acta-dark hover:text-acta-gold transition-colors">Inicio</a>
-          <a href="#servicios"
-            class="text-sm font-medium text-gray-500 hover:text-acta-gold transition-colors">Servicios</a>
-          <a href="#contact"
+          <a href="#servicios" data-i18n="nav_pricing"
+            class="text-sm font-medium text-gray-500 hover:text-acta-gold transition-colors">Planes</a>
+          <a href="#contact" data-i18n="nav_contact"
             class="text-sm font-medium text-gray-500 hover:text-acta-gold transition-colors">Contacto</a>
-          <a href="#servicios"
+
+          <!-- Language Button -->
+          <button id="lang-toggle"
+            class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors mr-2">
+            <span id="lang-label">ES</span> 🌐
+          </button>
+
+          <a href="#servicios" data-i18n="hero_cta"
             class="bg-acta-gold text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-yellow-700 transition-all duration-300 shadow-lg hover:shadow-yellow-500/20">
             Ver Planes
           </a>
@@ -64,6 +71,12 @@
 
         <!-- Mobile menu button -->
         <div class="md:hidden flex items-center">
+          <!-- Mobile Language Button (Simplified) -->
+          <button id="lang-toggle-mobile"
+            class="flex items-center gap-1 px-2 py-1 border border-gray-300 rounded-full text-xs font-semibold hover:bg-gray-100 transition-colors mr-4">
+            <span id="lang-label-mobile">ES</span> 🌐
+          </button>
+
           <button id="mobile-menu-btn" class="text-gray-500 hover:text-acta-dark focus:outline-none">
             <i class="fas fa-bars text-xl"></i>
           </button>
@@ -73,9 +86,12 @@
     <!-- Mobile Menu -->
     <div class="hidden md:hidden bg-white/95 border-t border-gray-100 rounded-b-3xl" id="mobile-menu">
       <div class="px-8 pt-2 pb-6 space-y-1">
-        <a href="index.html" class="block py-3 text-base font-medium text-acta-dark border-b border-gray-50">Inicio</a>
-        <a href="#servicios" class="block py-3 text-base font-medium text-gray-500 hover:text-acta-orange">Servicios</a>
-        <a href="#contact" class="block py-3 text-base font-medium text-gray-500 hover:text-acta-orange">Contacto</a>
+        <a href="index.html" data-i18n="nav_home"
+          class="block py-3 text-base font-medium text-acta-dark border-b border-gray-50">Inicio</a>
+        <a href="#servicios" data-i18n="nav_pricing"
+          class="block py-3 text-base font-medium text-gray-500 hover:text-acta-orange">Planes</a>
+        <a href="#contact" data-i18n="nav_contact"
+          class="block py-3 text-base font-medium text-gray-500 hover:text-acta-orange">Contacto</a>
       </div>
     </div>
   </nav>
@@ -92,25 +108,23 @@
         <div
           class="bg-white/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none rounded-3xl p-8 md:p-0 shadow-xl md:shadow-none transition-all duration-300">
 
-          <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight fade-in-up">
-            Analizamos tu negocio.<br>
-            <span class="text-gray-900">
-              Construimos el futuro.
-            </span>
+          <h1 data-i18n="hero_title"
+            class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight fade-in-up">
+            Transformamos tu Visión en una Experiencia Digital
           </h1>
 
-          <p class="text-lg md:text-xl text-gray-600 mt-6 mb-10 font-medium leading-relaxed fade-in-up delay-100">
-            Transformamos tu presencia digital con estrategias de alto impacto. Diseño minimalista, tecnología de punta
-            y resultados que hacen crecer tu marca.
+          <p data-i18n="hero_subtitle"
+            class="text-lg md:text-xl text-gray-600 mt-6 mb-10 font-medium leading-relaxed fade-in-up delay-100">
+            Diseño web de alto impacto y estrategias digitales para hacer crecer tu negocio.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 fade-in-up delay-200">
-            <a href="#servicios"
+            <a href="#servicios" data-i18n="hero_cta"
               class="inline-flex justify-center items-center px-8 py-4 bg-acta-gold text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               Ver Planes
               <i class="fas fa-arrow-right ml-2"></i>
             </a>
-            <a href="#contact"
+            <a href="#contact" data-i18n="hero_contact"
               class="inline-flex justify-center items-center px-8 py-4 bg-transparent text-gray-900 border-2 border-gray-900 font-bold rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300">
               Contáctanos
             </a>
@@ -263,8 +277,9 @@
             <i class="fas fa-desktop"></i>
           </div>
 
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">Página Básica / Blog</h3>
-          <p class="text-gray-500 mb-8 h-10 px-4">Tu carta de presentación digital. Ideal para marcas que buscan generar
+          <h3 data-i18n="price_basic_title" class="text-2xl font-bold text-gray-900 mb-2">Página Básica / Blog</h3>
+          <p data-i18n="price_basic_desc" class="text-gray-500 mb-8 h-10 px-4">Tu carta de presentación digital. Ideal
+            para marcas que buscan generar
             confianza y tener presencia profesional en Google.</p>
 
           <div class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-6 mb-6 block" id="price-basic"
@@ -273,9 +288,9 @@
           </div>
 
           <a href="https://wa.me/573003961835?text=Hola%20ACTA,%20estoy%20interesado%20en%20el%20Plan%20B%C3%A1sico%20(P%C3%A1gina%20Web%20y%20Blog)."
-            target="_blank"
+            data-i18n-href="link_wa_basic" target="_blank"
             class="border-2 border-acta-gold text-acta-gold font-bold py-3 px-8 rounded-full hover:bg-acta-gold hover:text-white transition-all duration-300 mb-8 w-full max-w-xs">
-            Empezar Ahora
+            <span data-i18n="price_cta">Empezar Ahora</span>
           </a>
 
           <ul class="text-left space-y-4 text-gray-600 w-full px-4">
@@ -301,8 +316,9 @@
             <i class="fas fa-rocket"></i>
           </div>
 
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">Landing Page Pro</h3>
-          <p class="text-gray-500 mb-8 h-10 px-4">Una máquina de ventas 24/7. Estrategia de diseño y persuasión enfocada
+          <h3 data-i18n="price_pro_title" class="text-2xl font-bold text-gray-900 mb-2">Landing Page Pro</h3>
+          <p data-i18n="price_pro_desc" class="text-gray-500 mb-8 h-10 px-4">Una máquina de ventas 24/7. Estrategia de
+            diseño y persuasión enfocada
             100% en convertir visitantes en clientes reales.</p>
 
           <div class="mb-8">
@@ -314,9 +330,9 @@
           </div>
 
           <a href="https://wa.me/573003961835?text=Hola%20ACTA,%20estoy%20interesado%20en%20el%20Plan%20Landing%20Page%20Pro%20(M%C3%A1quina%20de%20Ventas)."
-            target="_blank"
+            data-i18n-href="link_wa_pro" target="_blank"
             class="bg-acta-gold text-white font-bold py-3 px-8 rounded-full hover:bg-yellow-700 hover:shadow-lg transition-all duration-300 mb-8 w-full max-w-xs transform hover:-translate-y-1">
-            Empezar Ahora
+            <span data-i18n="price_cta">Empezar Ahora</span>
           </a>
 
           <ul class="text-left space-y-4 text-gray-600 w-full px-4">
@@ -362,17 +378,17 @@
             <i class="fab fa-whatsapp"></i>
           </div>
 
-          <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
+          <h3 data-i18n="wa_title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
             Hablemos de tu proyecto
           </h3>
 
-          <p class="text-lg text-gray-500 mb-10 leading-relaxed">
+          <p data-i18n="wa_desc" class="text-lg text-gray-500 mb-10 leading-relaxed">
             Sin formularios largos ni esperas. Conecta directamente con nuestro equipo de estrategia y recibe una
             respuesta prioritaria.
           </p>
 
           <a href="https://wa.me/573003961835?text=Hola%20ACTA,%20vengo%20de%20su%20web%20y%20estoy%20interesado%20en%20sus%20planes."
-            target="_blank"
+            data-i18n-href="link_wa_main" target="_blank"
             class="group/btn relative w-full flex items-center justify-center px-8 py-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-2xl shadow-xl hover:shadow-green-500/40 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
 
             <div
@@ -382,8 +398,10 @@
             <i class="fab fa-whatsapp text-5xl mr-5 animate-wiggle drop-shadow-md"></i>
 
             <div class="text-left flex flex-col relative z-10">
-              <span class="text-green-100 text-xs font-bold uppercase tracking-widest mb-1">Disponible Ahora</span>
-              <span class="text-2xl md:text-3xl font-bold leading-none text-white drop-shadow-sm">Iniciar Chat</span>
+              <span data-i18n="wa_available"
+                class="text-green-100 text-xs font-bold uppercase tracking-widest mb-1">Disponible Ahora</span>
+              <span data-i18n="wa_btn_text"
+                class="text-2xl md:text-3xl font-bold leading-none text-white drop-shadow-sm">Iniciar Chat</span>
             </div>
 
             <i
@@ -391,7 +409,8 @@
           </a>
 
           <p class="mt-6 text-sm text-gray-400">
-            <i class="fas fa-lock mr-1"></i> Tu consulta es 100% privada y sin compromiso.
+            <i class="fas fa-lock mr-1"></i> <span data-i18n="wa_disclaimer">Tu consulta es 100% privada y sin
+              compromiso.</span>
           </p>
         </div>
       </div>
@@ -419,12 +438,13 @@
         <div>
           <h4 class="text-acta-gold font-bold uppercase tracking-wider text-sm mb-6">Navegación</h4>
           <ul class="space-y-4">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Inicio</a>
+            <li><a href="#" data-i18n="nav_home"
+                class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Inicio</a>
             </li>
-            <li><a href="#servicios"
+            <li><a href="#servicios" data-i18n="nav_pricing"
                 class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Planes y Servicios</a>
             </li>
-            <li><a href="#contact"
+            <li><a href="#contact" data-i18n="nav_contact"
                 class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Contacto</a></li>
           </ul>
         </div>
@@ -461,6 +481,7 @@
 
   <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/573003961835?text=Hola%20ACTA,%20estoy%20interesado%20en%20sus%20servicios" target="_blank"
+    data-i18n-href="link_wa_main"
     class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-acta-gold flex items-center justify-center shadow-xl border-2 border-white hover:scale-110 hover:shadow-2xl transition-all duration-300 group">
     <i class="fab fa-whatsapp text-3xl text-white group-hover:rotate-12 transition-transform duration-300"></i>
   </a>

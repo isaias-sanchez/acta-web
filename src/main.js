@@ -1,5 +1,6 @@
 // Importamos el CSS para que Vite lo empaquete correctamente
 import './style.css';
+import { translations } from './translations.js';
 
 // --- 1. Lógica de la Barra de Navegación Flotante (Scroll) ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -65,5 +66,60 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnCop && btnUsd) {
     btnCop.addEventListener('click', () => updatePrices('COP'));
     btnUsd.addEventListener('click', () => updatePrices('USD'));
+  }
+});
+
+// --- 3. Lógica del Cambio de Idioma (Español/Inglés) ---
+document.addEventListener('DOMContentLoaded', () => {
+  const langToggle = document.getElementById('lang-toggle');
+  const langLabel = document.getElementById('lang-label');
+
+  // Mobile elements
+  const langToggleMobile = document.getElementById('lang-toggle-mobile');
+  const langLabelMobile = document.getElementById('lang-label-mobile');
+
+  // Detectar idioma guardado o defecto español
+  let currentLang = localStorage.getItem('site-lang') || 'es';
+
+  function updateLanguage(lang) {
+    const t = translations[lang];
+
+    // 1. Actualizar Textos
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key]) el.textContent = t[key];
+    });
+
+    // 2. Actualizar Enlaces (Hrefs)
+    document.querySelectorAll('[data-i18n-href]').forEach(el => {
+      const key = el.getAttribute('data-i18n-href');
+      if (t[key]) el.setAttribute('href', t[key]);
+    });
+
+    // 3. Actualizar UI del botón
+    const label = lang.toUpperCase();
+    if (langLabel) langLabel.textContent = label;
+    if (langLabelMobile) langLabelMobile.textContent = label;
+
+    localStorage.setItem('site-lang', lang);
+  }
+
+  // Inicializar
+  updateLanguage(currentLang);
+
+  // Evento Click (Desktop)
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      updateLanguage(currentLang);
+    });
+  }
+
+  // Evento Click (Mobile)
+  if (langToggleMobile) {
+    langToggleMobile.addEventListener('click', () => {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      updateLanguage(currentLang);
+    });
   }
 });
